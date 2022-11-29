@@ -6,15 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Survival/Scenes/application.unity
-    guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
-    path: Assets/Survival/Scenes/menu.unity
-    guid: 4e3b4b94447fcd74bb9eb89af8470f71
-  - enabled: 1
-    path: Assets/Survival/Scenes/gameplay.unity
-    guid: df1774412884fe7449710b37e11cd123
-  - enabled: 1
-    path: Assets/Survival/Scenes/level_prototype.unity
-    guid: 68c650270c409a843a6fbc7b2b843e54
+    path: Assets/Survival/Scenes/basic.unity
+    guid: c9ed49b3d2b28d34f90168fd316c35db
   m_configObjects: {}

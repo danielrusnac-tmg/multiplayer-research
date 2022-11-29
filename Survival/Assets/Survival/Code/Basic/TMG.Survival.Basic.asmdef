@@ -1,12 +1,19 @@
 {
     "name": "TMG.Survival.Basic",
     "rootNamespace": "TMG.Survival.Gameplay",
-    "references": [],
+    "references": [
+        "GUID:e4e3c1f855edf1f44a6050dcc0a93ac5"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
-    "overrideReferences": false,
-    "precompiledReferences": [],
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "Fusion.Common.dll",
+        "Fusion.Realtime.dll",
+        "Fusion.Runtime.dll",
+        "Fusion.Sockets.dll"
+    ],
     "autoReferenced": true,
     "defineConstraints": [],
     "versionDefines": [],
