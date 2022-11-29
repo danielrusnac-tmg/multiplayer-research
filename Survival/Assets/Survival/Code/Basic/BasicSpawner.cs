@@ -52,12 +52,14 @@ namespace TMG.Survival.Gameplay
             _runner = gameObject.AddComponent<NetworkRunner>();
             _runner.ProvideInput = true;
 
+            await _runner.JoinSessionLobby(SessionLobby.Custom, "lobby");
             await _runner.StartGame(new StartGameArgs()
             {
                 GameMode = mode,
                 SessionName = "TestRoom",
                 Scene = SceneManager.GetActiveScene().buildIndex,
-                SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>()
+                SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>(),
+                CustomLobbyName = "lobby"
             });
         }
 
