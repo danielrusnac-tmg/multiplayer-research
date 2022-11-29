@@ -2,8 +2,8 @@ using System.Collections;
 using TMG.Survival.Gameplay.Messages;
 using TMG.Survival.Infrastructure;
 using TMG.Survival.Infrastructure.PubSub;
-using TMG.Survival.SceneManagement;
-using TMG.Survival.ScreenCurtain;
+using TMG.Survival.Infrastructure.SceneManagement;
+using TMG.Survival.Infrastructure.ScreenCurtain;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -16,9 +16,11 @@ namespace TMG.Survival.ApplicationLifecycle
     {
         [SerializeField] private CoroutineRunnerBehavior _coroutineRunner;
         [SerializeField] private AlphaScreenCurtain _screenCurtain;
-        [SerializeField] private GameScene[] _defaultScenes;
+        [SerializeField] private GameScene[] _menuScenes;
+        [SerializeField] private GameScene[] _gameplayScenes;
 
         private bool _isRestarting;
+        private bool _isLoading;
         private ISceneLoader _sceneLoader;
         private IPubSubService _pubSubService;
 
@@ -42,20 +44,46 @@ namespace TMG.Survival.ApplicationLifecycle
         private IEnumerator Start()
         {
             _pubSubService.RegisterListener<QuitApplicationMessage>(OnQuitRequested);
-            
+            _pubSubService.RegisterListener<LoadMenuMessage>(OnLoadMenuRequested);
+            _pubSubService.RegisterListener<LoadGameplayMessage>(OnLoadGameplayRequested);
+
             _screenCurtain.ShowCurtainImmediate();
 
-            foreach (GameScene scene in _defaultScenes)
-                yield return _sceneLoader.Load(scene);
-
-            yield return _screenCurtain.HideCurtain();
+            yield return LoadMenuRoutine();
         }
 
         protected override void OnDestroy()
         {
             base.OnDestroy();
-            
+
             _pubSubService.UnregisterListener<QuitApplicationMessage>(OnQuitRequested);
+            _pubSubService.UnregisterListener<LoadMenuMessage>(OnLoadMenuRequested);
+            _pubSubService.UnregisterListener<LoadGameplayMessage>(OnLoadGameplayRequested);
+        }
+
+        private IEnumerator LoadMenuRoutine()
+        {
+            yield return LoadScenes(_gameplayScenes, _menuScenes);
+        }
+
+        private IEnumerator LoadGameplayRoutine()
+        {
+            yield return LoadScenes(_menuScenes, _gameplayScenes);
+        }
+
+        private IEnumerator LoadScenes(GameScene[] unload, GameScene[] load)
+        {
+            _isLoading = true;
+            yield return _screenCurtain.ShowCurtain();
+
+            foreach (GameScene scene in unload)
+                yield return _sceneLoader.Unload(scene);
+
+            foreach (GameScene scene in load)
+                yield return _sceneLoader.Load(scene);
+
+            yield return _screenCurtain.HideCurtain();
+            _isLoading = false;
         }
 
         [ContextMenu(nameof(Restart))]
@@ -71,7 +99,7 @@ namespace TMG.Survival.ApplicationLifecycle
         public void Quit()
         {
             _pubSubService.UnregisterListener<QuitApplicationMessage>(OnQuitRequested);
-            
+
 #if UNITY_EDITOR
             EditorApplication.isPlaying = false;
 #else
@@ -84,6 +112,18 @@ namespace TMG.Survival.ApplicationLifecycle
             _isRestarting = true;
             yield return _screenCurtain.ShowCurtain();
             SceneManager.LoadScene(0);
+        }
+
+        private void OnLoadMenuRequested()
+        {
+            if (!_isLoading)
+                StartCoroutine(LoadMenuRoutine());
+        }
+
+        private void OnLoadGameplayRequested()
+        {
+            if (!_isLoading)
+                StartCoroutine(LoadGameplayRoutine());
         }
 
         private void OnQuitRequested()

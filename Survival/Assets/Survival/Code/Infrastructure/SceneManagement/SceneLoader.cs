@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.SceneManagement;
 
-namespace TMG.Survival.SceneManagement
+namespace TMG.Survival.Infrastructure.SceneManagement
 {
     public class SceneLoader : ISceneLoader
     {

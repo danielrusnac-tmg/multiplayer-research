@@ -1,13 +1,37 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Fusion;
 using Fusion.Sockets;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace TMG.Survival.Networking
 {
-    public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
+    public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks, INetworkManager
     {
+        [SerializeField] private NetworkRunner _networkRunner;
+        
+        public async Task<bool> StartGame(GameMode mode)
+        {
+            if (_networkRunner.IsStarting)
+                return false;
+            
+            _networkRunner.ProvideInput = true;
+            
+            Task<StartGameResult> task = _networkRunner.StartGame(new StartGameArgs()
+            {
+                GameMode = mode,
+                SessionName = "TestRoom",
+                Scene = SceneManager.GetActiveScene().buildIndex,
+                SceneManager = gameObject.GetComponent<INetworkSceneManager>()
+            });
+
+            await task;
+
+            return task.IsCompleted;
+        }
+
         public void OnPlayerJoined(NetworkRunner runner, PlayerRef player) { }
 
         public void OnPlayerLeft(NetworkRunner runner, PlayerRef player) { }

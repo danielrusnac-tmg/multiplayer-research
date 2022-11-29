@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace TMG.Survival.SceneManagement
+namespace TMG.Survival.Infrastructure.SceneManagement
 {
     [CreateAssetMenu(menuName = "Scene Loader/Game Scene", fileName = "scene_")]
     public class GameScene : ScriptableObject

@@ -9,25 +9,16 @@ namespace TMG.Survival.Gameplay
     {
         private IPubSubService _pubSubService;
 
-        protected override void Configure(IContainerBuilder builder)
-        {
-            base.Configure(builder);
-        }
-
         [Inject]
         private void Construct(IPubSubService pubSubService)
         {
             _pubSubService = pubSubService;
+            _pubSubService = pubSubService;
         }
 
-        public void StartHost()
+        public void StartGame()
         {
-            
-        }
-
-        public void StartJoin()
-        {
-            
+            _pubSubService.Publish(new LoadGameplayMessage());
         }
 
         public void Quit()

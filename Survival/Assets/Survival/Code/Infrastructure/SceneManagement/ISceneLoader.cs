@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace TMG.Survival.SceneManagement
+namespace TMG.Survival.Infrastructure.SceneManagement
 {
     public interface ISceneLoader
     {

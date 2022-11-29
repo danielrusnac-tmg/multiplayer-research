@@ -9,7 +9,8 @@
     "precompiledReferences": [
         "Fusion.Common.dll",
         "Fusion.Runtime.dll",
-        "Fusion.Sockets.dll"
+        "Fusion.Sockets.dll",
+        "Fusion.Realtime.dll"
     ],
     "autoReferenced": true,
     "defineConstraints": [],

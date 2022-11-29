@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace TMG.Survival.ScreenCurtain
+namespace TMG.Survival.Infrastructure.ScreenCurtain
 {
     public class AlphaScreenCurtain : MonoBehaviour, IScreenCurtain
     {

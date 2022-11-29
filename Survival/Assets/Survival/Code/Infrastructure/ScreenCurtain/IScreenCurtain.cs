@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace TMG.Survival.ScreenCurtain
+namespace TMG.Survival.Infrastructure.ScreenCurtain
 {
     public interface IScreenCurtain
     {
