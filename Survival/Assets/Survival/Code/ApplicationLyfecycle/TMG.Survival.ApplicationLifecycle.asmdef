@@ -1,0 +1,22 @@
+{
+    "name": "TMG.Survival.ApplicationLifecycle",
+    "rootNamespace": "TMG.Survival.ApplicationLifecycle",
+    "references": [
+        "GUID:eea8153e0b35a4346ad27d57264a3817",
+        "GUID:32da8baf01a0c4e4587059841cece525",
+        "GUID:b0214a6008ed146ff8f122a6a9c2f6cc"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "Fusion.Common.dll",
+        "Fusion.Runtime.dll",
+        "Fusion.Realtime.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

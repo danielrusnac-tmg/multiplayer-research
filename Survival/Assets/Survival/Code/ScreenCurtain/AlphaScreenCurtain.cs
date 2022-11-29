@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace TMG.Survival.ScreenCurtain
 {
-    public class AlphaScreenFader : MonoBehaviour, IScreenFader
+    public class AlphaScreenCurtain : MonoBehaviour, IScreenCurtain
     {
         [SerializeField] private float _duration = 0.5f;
         [SerializeField] private CanvasGroup _canvasGroup;

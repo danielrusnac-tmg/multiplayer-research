@@ -2,7 +2,7 @@
 
 namespace TMG.Survival.ScreenCurtain
 {
-    public interface IScreenFader
+    public interface IScreenCurtain
     {
         bool IsCurtainShown { get; }
         
