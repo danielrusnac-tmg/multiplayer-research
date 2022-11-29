@@ -32,6 +32,11 @@ namespace TMG.Survival.Networking
             return task.IsCompleted;
         }
 
+        public void Leave()
+        {
+            _networkRunner.Shutdown();
+        }
+
         public void OnPlayerJoined(NetworkRunner runner, PlayerRef player) { }
 
         public void OnPlayerLeft(NetworkRunner runner, PlayerRef player) { }

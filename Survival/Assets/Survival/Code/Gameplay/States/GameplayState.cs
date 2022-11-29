@@ -14,6 +14,8 @@ namespace TMG.Survival.Gameplay
     {
         [SerializeField] private BasicSpawner _basicSpawner;
 
+        private bool _left;
+        private bool _isInitialized;
         private IScreenCurtain _curtain;
         private INetworkManager _networkManager;
         private IPubSubService _pubSubService;
@@ -37,6 +39,17 @@ namespace TMG.Survival.Gameplay
         {
             StartGame();
         }
+        
+        public void QuitGameplay()
+        {
+            if (!_isInitialized || _left)
+                return;
+            
+            _networkManager.Leave();
+            _pubSubService.Publish(new LoadMenuMessage());
+
+            _left = true;
+        }
 
         private async void StartGame()
         {
@@ -53,6 +66,7 @@ namespace TMG.Survival.Gameplay
         private IEnumerator OnGameFoundRoutine()
         {
             yield return _curtain.HideCurtain();
+            _isInitialized = true;
         }
     }
 }

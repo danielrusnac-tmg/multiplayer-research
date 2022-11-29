@@ -326,6 +326,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5592066485885608233, guid: 5c7d6f7aa9071974489181f959baf102,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5592066485885608233, guid: 5c7d6f7aa9071974489181f959baf102,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5592066485885608233, guid: 5c7d6f7aa9071974489181f959baf102,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1677985601}
+    - target: {fileID: 5592066485885608233, guid: 5c7d6f7aa9071974489181f959baf102,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5592066485885608233, guid: 5c7d6f7aa9071974489181f959baf102,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitGameplay
+      objectReference: {fileID: 0}
+    - target: {fileID: 5592066485885608233, guid: 5c7d6f7aa9071974489181f959baf102,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMG.Survival.Gameplay.GameplayState, TMG.Survival.Gameplay
+      objectReference: {fileID: 0}
+    - target: {fileID: 5592066485885608233, guid: 5c7d6f7aa9071974489181f959baf102,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c7d6f7aa9071974489181f959baf102, type: 3}
 --- !u!224 &990684439 stripped
@@ -484,7 +519,4 @@ MonoBehaviour:
   autoRun: 1
   autoInjectGameObjects:
   - {fileID: 1677985599}
-  _menuScenes:
-  - {fileID: 11400000, guid: a0d01a27f47b29f4385e25a2b447f168, type: 2}
-  - {fileID: 11400000, guid: f607681a4d3ca3142bc4b127028ce7ce, type: 2}
   _basicSpawner: {fileID: 125232636}

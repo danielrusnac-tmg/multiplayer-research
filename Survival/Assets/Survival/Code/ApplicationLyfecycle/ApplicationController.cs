@@ -73,6 +73,9 @@ namespace TMG.Survival.ApplicationLifecycle
 
         private IEnumerator LoadScenes(GameScene[] unload, GameScene[] load)
         {
+            if (_isLoading)
+                yield break;
+            
             _isLoading = true;
             yield return _screenCurtain.ShowCurtain();
 
