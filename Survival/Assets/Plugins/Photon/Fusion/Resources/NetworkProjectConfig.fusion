@@ -156,7 +156,8 @@
     "AssembliesToWeave": [
         "Assembly-CSharp",
         "Assembly-CSharp-firstpass",
-        "Fusion.Prototyping"
+        "Fusion.Prototyping",
+        "TMG.Survival.Basic"
     ],
     "UseSerializableDictionary": true,
     "NullChecksForNetworkedProperties": true,

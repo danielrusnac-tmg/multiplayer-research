@@ -2,7 +2,8 @@
     "name": "TMG.Survival.Basic",
     "rootNamespace": "TMG.Survival.Gameplay",
     "references": [
-        "GUID:e4e3c1f855edf1f44a6050dcc0a93ac5"
+        "GUID:e4e3c1f855edf1f44a6050dcc0a93ac5",
+        "GUID:75469ad4d38634e559750d17036d5f7c"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
