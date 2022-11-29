@@ -1,0 +1,21 @@
+{
+    "name": "Fusion.Prototyping",
+    "rootNamespace": "",
+    "references": [
+        "GUID:4d449a4732e064d26a3069f2cfd88917"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "Fusion.Common.dll",
+        "Fusion.Runtime.dll",
+        "Fusion.Realtime.dll",
+        "Fusion.Sockets.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
