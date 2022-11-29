@@ -12,7 +12,6 @@ namespace TMG.Survival.Gameplay
 
 		[Range(0f, 1f)]
 		[SerializeField] private float _radius = 1f;
-
 		[SerializeField] private RectTransform _defaultJoystickPosition;
 		[SerializeField] private RectTransform _handle;
 		[SerializeField] private RectTransform _constrain;
