@@ -1,12 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace TMG.Survival.SceneManagement
 {
-    public class SceneLoader : MonoBehaviour, ISceneLoader
+    public class SceneLoader : ISceneLoader
     {
         private HashSet<GameScene> _loadedScenes = new();
 
