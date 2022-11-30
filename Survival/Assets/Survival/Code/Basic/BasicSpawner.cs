@@ -21,7 +21,7 @@ namespace TMG.Survival.Gameplay
         {
             _inputActions = new InputActions();
             _inputActions.Map.Enable();
-            
+
             StartGame(GameMode.AutoHostOrClient);
         }
 
@@ -52,14 +52,14 @@ namespace TMG.Survival.Gameplay
             _runner = gameObject.AddComponent<NetworkRunner>();
             _runner.ProvideInput = true;
 
-            await _runner.JoinSessionLobby(SessionLobby.Custom, "lobby");
+            // await _runner.JoinSessionLobby(SessionLobby.Custom, "lobby");
             await _runner.StartGame(new StartGameArgs()
             {
                 GameMode = mode,
-                SessionName = "TestRoom",
+                // SessionName = "TestRoom",
                 Scene = SceneManager.GetActiveScene().buildIndex,
                 SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>(),
-                CustomLobbyName = "lobby"
+                // CustomLobbyName = "lobby"
             });
         }
 
@@ -68,10 +68,13 @@ namespace TMG.Survival.Gameplay
             if (runner.IsServer)
             {
                 // Create a unique position for the player
-                Vector3 spawnPosition = new Vector3((player.RawEncoded%runner.Config.Simulation.DefaultPlayers)*3,1,0);
-                NetworkObject networkPlayerObject = runner.Spawn(_playerPrefab, spawnPosition, Quaternion.identity, player);
+                Vector3 spawnPosition =
+                    new Vector3((player.RawEncoded % runner.Config.Simulation.DefaultPlayers) * 3, 1, 0);
+                NetworkObject networkPlayerObject =
+                    runner.Spawn(_playerPrefab, spawnPosition, Quaternion.identity, player);
                 // Keep track of the player avatars so we can remove it when they disconnect
                 _spawnedCharacters.Add(player, networkPlayerObject);
+                runner.SetPlayerObject(player, networkPlayerObject);
             }
         }
 
@@ -91,10 +94,10 @@ namespace TMG.Survival.Gameplay
 
             Vector2 inputDirection = _inputActions.Map.Move.ReadValue<Vector2>();
             inputDirection = Vector2.ClampMagnitude(inputDirection, 1f);
-            
-            data.Direction = Quaternion.AngleAxis(_inputOffsetAngle, Vector3.up) * 
+
+            data.Direction = Quaternion.AngleAxis(_inputOffsetAngle, Vector3.up) *
                              new Vector3(inputDirection.x, 0f, inputDirection.y);
-            
+
             input.Set(data);
         }
 
